@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>chris & Emma Bryllup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family: 'Segoe UI', Arial, sans-serif; background: #f8f6f2; color: #3a2c1a; }
+    nav {
+      background: rgba(58,44,26,0.95);
+      position: fixed; top:0; left:0; width:100%; z-index:100;
+      box-shadow: 0 2px 12px #0002;
+      text-align: center;
+    }
+    nav a {
+      display: inline-block; margin: 0 18px; padding: 18px 0;
+      color: #fff; text-decoration: none; font-weight: bold; font-size: 1.1em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #e6b7a9; }
+    .section { max-width: 900px; margin: 0 auto; padding: 80px 20px 40px 20px; }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      min-height: 480px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: #fff; text-shadow: 0 2px 12px #0008;
+      position: relative;
+    }
+    .hero-overlay {
+      position: absolute; top:0; left:0; width:100%; height:100%;
+      background: linear-gradient(180deg,rgba(0,0,0,0.3),rgba(0,0,0,0.5));
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative; z-index: 2; text-align: center;
+    }
+    .hero h1 { font-size: 3em; margin: 0.2em 0 0.1em 0; font-family: 'Brush Script MT', cursive; letter-spacing: 2px;}
+    .hero h2 { font-size: 1.5em; margin: 0.2em 0 0.5em 0; }
+    .countdown { font-size: 1.2em; margin-top: 1em; background:rgba(255,255,255,0.2); display:inline-block; padding:8px 18px; border-radius:20px;}
+    h2.section-title { color: #b48a78; font-size: 2em; margin-bottom: 0.5em; text-align: center;}
+    .timeline { border-left: 3px solid #e6b7a9; margin: 30px 0 30px 20px; padding-left: 20px;}
+    .timeline-event { margin-bottom: 18px; }
+    .timeline-event strong { color: #b48a78; }
+    .gallery { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; }
+    .gallery img { width: 220px; border-radius: 10px; box-shadow: 0 2px 8px #0002; }
+    .event-table { width:100%; max-width:600px; margin:0 auto 20px auto; border-collapse:collapse;}
+    .event-table td, .event-table th { padding: 10px 8px; }
+    .event-table th { color: #b48a78; text-align: left;}
+    .map { width:100%; max-width: 600px; height: 260px; border-radius: 12px; border:0; margin: 18px 0;}
+    .hotels { margin: 0 0 18px 0; }
+    .hotels li { margin-bottom: 8px; }
+    .rsvp-form { max-width: 400px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px #0001; padding: 24px;}
+    .rsvp-form label { display:block; margin: 12px 0 4px 0; }
+    .rsvp-form input, .rsvp-form select, .rsvp-form textarea {
+      width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #e6b7a9; margin-bottom: 10px; font-size: 1em;
+    }
+    .rsvp-form button {
+      background: #b48a78; color: #fff; border: none; border-radius: 6px; padding: 10px 24px; font-size: 1.1em; cursor: pointer;
+      margin-top: 10px;
+    }
+    .rsvp-form button:hover { background: #7a5c43; }
+    .contact { text-align: center; }
+    .contact a { color: #b48a78; text-decoration: none; margin: 0 8px; }
+    .gift { background: #fff7f3; border-radius: 10px; padding: 18px; margin: 18px 0; text-align: center;}
+    @media (max-width: 700px) {
+      .section { padding: 80px 5vw 40px 5vw; }
+      .gallery img { width: 100%; max-width: 320px; }
+      .event-table { font-size: 0.98em; }
+    }
+    /* For nav offset */
+    .anchor { display: block; height: 80px; margin-top: -80px; visibility: hidden; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#home">🏠 Hjem</a>
+    <a href="#story">💌 Vår Historie</a>
+    <a href="#details">📅 Detaljer</a>
+    <a href="#gallery">📸 Galleri</a>
+    <a href="#travel">📍 Reise & Overnatting</a>
+    <a href="#gift">🎁 Gave</a>
+    <a href="#rsvp">📝 RSVP</a>
+    <a href="#contact">📱 Kontakt</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <div id="home" class="anchor"></div>
+  <section class="hero section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>chris & Emma</h1>
+      <h2>Vi gifter oss!</h2>
+      <div style="font-size:1.2em; margin: 1em 0;">
+        20. juli 2024 · Solgården, Oslo
+      </div>
+      <div class="countdown" id="countdown"></div>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <div id="story" class="anchor"></div>
+  <section class="section">
+    <h2 class="section-title">💌 Vår Historie</h2>
+    <p style="text-align:center; max-width:600px; margin:0 auto;">
+      Vi møttes på en regnfull dag i Bergen i 2017, og siden den gang har vi delt utallige eventyr sammen. Fra vår første date på en liten kafé, til forlovelsen under nordlyset – hver dag har vært et nytt kapittel i vår kjærlighetshistorie.
+    </p>
+    <div class="timeline">
+      <div class="timeline-event"><strong>2017:</strong> Første møte i Bergen</div>
+      <div class="timeline-event"><strong>2018:</strong> Første ferie sammen til Lofoten</div>
+      <div class="timeline-event"><strong>2021:</strong> Forlovelse under nordlyset</div>
+      <div class="timeline-event"><strong>2024:</strong> Bryllup i Oslo</div>
+    </div>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Couple 1">
+      <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Couple 2">
+      <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80" alt="Couple 3">
+    </div>
+  </section>
+
+  <!-- Event Details -->
+  <div id="details" class="anchor"></div>
+  <section class="section">
+    <h2 class="section-title">📅 Detaljer</h2>
+    <table class="event-table">
+      <tr><th>Dato</th><td>20. juli 2024</td></tr>
+      <tr><th>Tid</th><td>15:00</td></tr>
+      <tr><th>Sted</th><td>Solgården, Oslo</td></tr>
+      <tr><th>Kleskode</th><td>Formell / Sommerlig</td></tr>
+    </table>
+    <div style="text-align:center;">
+      <iframe class="map" src="https://www.openstreetmap.org/export/embed.html?bbox=10.7522%2C59.9139%2C10.7622%2C59.9239&amp;layer=mapnik" style="border:1px solid #ccc"></iframe>
+    </div>
+    <h3 style="color:#b48a78; margin-top:30px;">Tidsplan</h3>
+    <table class="event-table">
+      <tr><th>15:00</th><td>Vielse</td></tr>
+      <tr><th>16:00</th><td>Mottakelse & mingling</td></tr>
+      <tr><th>17:30</th><td>Middag</td></tr>
+      <tr><th>20:00</th><td>Kake & taler</td></tr>
+      <tr><th>21:00</th><td>Dans & fest</td></tr>
+      <tr><th>00:00</th><td>Afterparty</td></tr>
+    </table>
+  </section>
+
+  <!-- Gallery -->
+  <div id="gallery" class="anchor"></div>
+  <section class="section">
+    <h2 class="section-title">📸 Galleri</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Engagement">
+      <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80" alt="Pre-wedding">
+      <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Childhood">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80" alt="Relationship">
+    </div>
+    <p style="text-align:center; color:#b48a78; margin-top:10px;">Flere bilder kommer etter bryllupet!</p>
+  </section>
+
+  <!-- Travel & Accommodation -->
+  <div id="travel" class="anchor"></div>
+  <section class="section">
+    <h2 class="section-title">📍 Reise & Overnatting</h2>
+    <h3 style="color:#b48a78;">Anbefalte hoteller</h3>
+    <ul class="hotels">
+      <li>Oslo Plaza Hotel – Rabattkode: <b>chris2024</b></li>
+      <li>Comfort Hotel Karl Johan – Rabattkode: <b>EMMA24</b></li>
+      <li>Scandic Byporten</li>
+    </ul>
+    <h3 style="color:#b48a78;">Reisetips</h3>
+    <ul>
+      <li>Nærmeste flyplass: Oslo Lufthavn Gardermoen (OSL)</li>
+      <li>Taxi-app: <a href="https://www.uber.com/no/no/" target="_blank">Uber</a>, <a href="https://bolt.eu/no-no/" target="_blank">Bolt</a></li>
+      <li>Offentlig transport: <a href="https://ruter.no/" target="_blank">Ruter</a></li>
+    </ul>
+    <h3 style="color:#b48a78;">Parkering</h3>
+    <p>Gratis parkering tilgjengelig ved lokalet.</p>
+  </section>
+
+  <!-- Gift Registry -->
+  <div id="gift" class="anchor"></div>
+  <section class="section">
+    <h2 class="section-title">🎁 Gave</h2>
+    <div class="gift">
+      <p>Din tilstedeværelse er den beste gaven for oss!<br>
+      Ønsker du likevel å gi en gave, kan du bruke vår gaveønskeliste eller sende en digital gave.</p>
+      <p>
+        <a href="https://www.giftster.com/" target="_blank">Gaveønskeliste</a> <br>
+        Vipps: <b>123456</b> <br>
+        PayPal: <b>paypal.me/chrisemma</b>
+      </p>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <div id="rsvp" class="anchor"></div>
+  <section class="section">
+    <h2 class="section-title">📝 RSVP</h2>
+    <form class="rsvp-form" id="rsvpForm">
+      <label for="name">Navn</label>
+      <input type="text" id="name" name="name" required>
+      <label for="guests">Antall gjester</label>
+      <select id="guests" name="guests">
+        <option>1</option>
+        <option>2</option>
+        <option>3+</option>
+      </select>
+      <label for="diet">Allergier / Matpreferanser</label>
+      <textarea id="diet" name="diet" rows="2"></textarea>
+      <label for="email">E-post (for bekreftelse)</label>
+      <input type="email" id="email" name="email" required>
+      <button type="submit">Send inn</button>
+      <div id="rsvpMsg" style="margin-top:10px;color:#b48a78;"></div>
+      <div style="font-size:0.95em; color:#888; margin-top:8px;">Svarfrist: 1. juni 2024</div>
+    </form>
+  </section>
+
+  <!-- Contact -->
+  <div id="contact" class="anchor"></div>
+  <section class="section">
+    <h2 class="section-title">📱 Kontakt</h2>
+    <div class="contact">
+      <p>Har du spørsmål? Ta gjerne kontakt!</p>
+      <p>
+        <b>chris:</b> <a href="mailto:chris@email.com">chris@email.com</a> |
+        <b>Emma:</b> <a href="mailto:emma@email.com">emma@email.com</a>
+      </p>
+      <p>
+        WhatsApp: <a href="https://wa.me/4712345678" target="_blank">+47 123 45 678</a> <br>
+        WeChat: <a href="weixin://dl/chat?chrisemma" target="_blank">chrisemma</a>
+      </p>
+    </div>
+  </section>
+
+  <script>
+    // Countdown timer
+    function updateCountdown() {
+      const weddingDate = new Date("2024-07-20T15:00:00+02:00");
+      const now = new Date();
+      const diff = weddingDate - now;
+      if (diff <= 0) {
+        document.getElementById('countdown').textContent = "Vi er gift!";
+        return;
+      }
+      const days = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff / (1000*60*60)) % 24);
+      const mins = Math.floor((diff / (1000*60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+      document.getElementById('countdown').textContent =
+        `Kun ${days} dager, ${hours} timer, ${mins} minutter og ${secs} sekunder igjen!`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // RSVP form (demo, no backend)
+    document.getElementById('rsvpForm').onsubmit = function(e) {
+      e.preventDefault();
+      document.getElementById('rsvpMsg').textContent = "Takk for din påmelding! Vi gleder oss til å se deg!";
+      this.reset();
+    }
+  </script>
+</body>
+</html>
